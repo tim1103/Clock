@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Fullscreen Clock.</title>
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<link rel="manifest" href="manifest.webmanifest">
+		<link rel="icon" href="favicon.104f11e6.ico" type="image/x-icon">
+		<link rel="stylesheet" href="src.6fe32a9c.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1.0.2/dist/css/mdui.min.css" />
+	</head>
+	<style>
+	div#menu {
+	    display: none;
+	}
+	</style>
+	<body>
+		<div id="app"></div>
+		<script src="src.6774439a.js"></script>
+	</body>
+	<script src="https://cdn.jsdelivr.net/npm/mdui@1.0.2/dist/js/mdui.min.js"></script>
+	<script>
+		function basic(){
+			mdui.snackbar({
+				message: 'top',
+				position: 'top',
+			    message: '激活专业版 页面更纯净',
+			    buttonText: '立即激活',
+			    onButtonClick: function () {
+			      mdui.alert('请联系提供商激活专业版');
+				  basic();
+			    },
+			    onClose: function () {
+			      basic();
+			    }
+			  });
+		}
+		basic()
+	</script>
+</html>
