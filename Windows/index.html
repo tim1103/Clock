@@ -18,6 +18,9 @@
 		.noDrag{
 		    webkit-app-region: no-drag;
 		}
+		.mdui-btn {
+			-webkit-app-region: no-drag;
+		}
 	</style>
 	<body>
 		<div class="mdui-toolbar mdui-color-indigo MainHeader">
@@ -25,13 +28,13 @@
 		  <span class="mdui-typo-title">Clock Windows</span>
 		  <div class="mdui-toolbar-spacer"></div>
 		  <a href="javascript:;" class="mdui-btn mdui-btn-icon">
-		      <i class="mdui-icon material-icons" onclick="setWin(min)">remove</i>
+		      <i class="mdui-icon material-icons" onclick="mdui.alert('敬请期待')">remove</i>
 		    </a>
 		    <a href="javascript:;" class="mdui-btn mdui-btn-icon">
-		      <i class="mdui-icon material-icons" onclick="setWin(max)">crop_square</i>
+		      <i class="mdui-icon material-icons" onclick="mdui.alert('敬请期待')">crop_square</i>
 		    </a>
 		    <a href="javascript:;" class="mdui-btn mdui-btn-icon">
-		      <i class="mdui-icon material-icons" onclick="window.close()">close</i>
+		      <i class="mdui-icon material-icons" onclick="closePage()">close</i>
 		    </a>
 		 
 		</div>
@@ -41,15 +44,17 @@
 			<a class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-pink-a200 mdui-btn-block" href="../simple-clock/index.html" style="margin-top: 50px">小字带秒时钟</a>
 		</div>
 		<script src="https://cdn.jsdelivr.net/npm/mdui@1.0.2/dist/js/mdui.min.js"></script>
-		<script>
-			const {ipcRenderer} = require("electron");
-			 
-			    export default {
-			        methods: {
-			            setWin(type){
-			                ipcRenderer.send(type);
-			            }
-			        }
+		<script type="text/javascript">
+			function closePage(){
+			    if(navigator.userAgent.indexOf("Firefox") != -1 || navigator.userAgent.indexOf("Chrome") != -1){
+			        window.location.href = "about:blank";
+			        window.close();
+			    }else{
+			        window.opener = null;
+			        window.open("", "_self");
+			        window.close();
+			    }
+			}
 		</script>
 	</body>
 </html>
