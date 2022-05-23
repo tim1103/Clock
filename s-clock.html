@@ -5,7 +5,7 @@
     <meta charset="utf-8">
   </head>
   <body style="background-color:black">
-    <h3 style="text-align:center;padding: 0px 0px 0px; margin: 0px; font-size: 200px;font-family:Arial, Helvetica, sans-serif;color:white;word-wrap: break-word;word-break:normal" id="time">
+    <h3 style="text-align:center;padding: 0px 0px 0px; margin: 0px; font-size: 250px;font-family:Arial, Helvetica, sans-serif;color:white;word-wrap: break-word;word-break:normal" id="time">
 		</h3>
   </body>
   <script>
@@ -16,7 +16,7 @@
 				i = t.getMinutes() < 10 ? "0" + t.getMinutes() : t.getMinutes(),
 				a = t.getSeconds() < 10 ? "0" + t.getSeconds() : t.getSeconds();
 			var htmltime = document.getElementById("time");
-			htmltime.innerHTML = e + "月" + n + "日" + "<br>" + s + ":" + i + ":" + a;
+			htmltime.innerHTML =  s + ":" + i + ":" + a+"<br>" + e + "月" + n + "日" ;
       setInterval(function() {
 				var t = new Date,
 					e = t.getMonth() + 1,
@@ -25,7 +25,7 @@
 					i = t.getMinutes() < 10 ? "0" + t.getMinutes() : t.getMinutes(),
 			 	a = t.getSeconds() < 10 ? "0" + t.getSeconds() : t.getSeconds();
 				var htmltime = document.getElementById("time");
-				htmltime.innerHTML = e + "月" + n + "日" + "<br>" + s + ":" + i + ":" + a;
+				htmltime.innerHTML =  s + ":" + i + ":" + a+"<br>" + e + "月" + n + "日" ;
 			}, 1000);
       </script>
 </html>
