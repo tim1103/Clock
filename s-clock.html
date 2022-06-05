@@ -1,32 +1,76 @@
 <!doctype html>
 <html>
-  <head>
-    <title>时钟</title>
-    <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;"/>
-  </head>
-  <body style="background-color:black;color=white;">
-    <h3 style="text-align:center;padding: 0px 0px 0px; margin: 0px; font-size: 250px;font-family:Arial, Helvetica, sans-serif;color:white;word-wrap: break-word;word-break:normal" id="time">
+	<head>
+		<title>时钟</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<style>
+		html {
+			background-color: black;
+			color: white;
+			font-family:微软雅黑,Arial, Helvetica, sans-serif;
+		}
+		#hours {
+			line-height:250px;
+			text-align:center;
+			padding: 0px 0px 0px; 
+			margin: 0px; 
+			font-size: 250px;
+			
+		}
+		#days{
+			font-size:170px;
+			line-height:250px;
+			text-align:center;
+			padding: 0px 0px 0px; 
+			margin: 0px; 
+			font-family:微软雅黑,Arial, Helvetica, sans-serif;
+			color:white;
+		}
+		.jinrishici-sentence{
+			font-size:50px;
+			text-align:center;
+		}
+	</style>
+		<h3 id="hours">
 		</h3>
-  </body>
-  <script>
-  var t = new Date,
+		<h3 id="days">
+		</h3>
+		<div class="jinrishici-sentence"></div>
+		
+	<script>
+		var t = new Date,
+			e = t.getMonth() + 1,
+			n = t.getDate(),
+			s = t.getHours() < 10 ? "0" + t.getHours() : t.getHours(),
+			i = t.getMinutes() < 10 ? "0" + t.getMinutes() : t.getMinutes(),
+			a = t.getSeconds() < 10 ? "0" + t.getSeconds() : t.getSeconds();
+		var htmlhours = document.getElementById("hours");
+		htmlhours.innerHTML = s + ":" + i + ":" + a;
+		var htmldays = document.getElementById("days");
+		htmldays.innerHTML =  e + "月" + n + "日";
+		
+		setInterval(function() {
+			var t = new Date,
 				e = t.getMonth() + 1,
 				n = t.getDate(),
 				s = t.getHours() < 10 ? "0" + t.getHours() : t.getHours(),
 				i = t.getMinutes() < 10 ? "0" + t.getMinutes() : t.getMinutes(),
 				a = t.getSeconds() < 10 ? "0" + t.getSeconds() : t.getSeconds();
-			var htmltime = document.getElementById("time");
-			htmltime.innerHTML =  s + ":" + i + ":" + a+"<div style='font-size:170px'>" + e + "月" + n + "日</div>" ;
-      setInterval(function() {
-				var t = new Date,
-					e = t.getMonth() + 1,
-					n = t.getDate(),
-					s = t.getHours() < 10 ? "0" + t.getHours() : t.getHours(),
-					i = t.getMinutes() < 10 ? "0" + t.getMinutes() : t.getMinutes(),
-			 	a = t.getSeconds() < 10 ? "0" + t.getSeconds() : t.getSeconds();
-				var htmltime = document.getElementById("time");
-				htmltime.innerHTML =  s + ":" + i + ":" + a+"<div style='font-size:170px'>" + e + "月" + n + "日</div>" ;
-			}, 1000);
-      </script>
+			var htmlhours = document.getElementById("hours");
+			htmlhours.innerHTML = s + ":" + i + ":" + a;
+		}, 1000);
+		setInterval(function() {
+			var t = new Date,
+				e = t.getMonth() + 1,
+				n = t.getDate(),
+				s = t.getHours() < 10 ? "0" + t.getHours() : t.getHours(),
+				i = t.getMinutes() < 10 ? "0" + t.getMinutes() : t.getMinutes(),
+				a = t.getSeconds() < 10 ? "0" + t.getSeconds() : t.getSeconds();
+			var htmldays = document.getElementById("days");
+			htmldays.innerHTML =  e + "月" + n + "日";
+		}, 10000);
+	</script>
+	<script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
 </html>
