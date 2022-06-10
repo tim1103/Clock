@@ -20,25 +20,40 @@
 			
 		}
 		#days{
-			font-size:170px;
-			line-height:250px;
+			font-size:150px;
+			line-height:230px;
 			text-align:center;
 			padding: 0px 0px 0px; 
 			margin: 0px; 
 			font-family:微软雅黑,Arial, Helvetica, sans-serif;
 			color:white;
+			
+		}
+		#exam{
+			font-size:90px;
+			text-align:center;
+			padding: 0px 0px 0px; 
+			margin: 0px; 
+			font-family:微软雅黑,Arial, Helvetica, sans-serif;
+			color: #f9f900;;
 		}
 		.jinrishici-sentence{
 			font-size:50px;
 			text-align:center;
 		}
+		#teachertime{
+			display:inline;
+			position:absolute;
+			right: 10px;
+			bottom: 10px;
+		}
 	</style>
-		<h3 id="hours">
-		</h3>
-		<h3 id="days">
-		</h3>
+		<h3 id="hours"></h3>
+		<h3 id="days"></h3>
+		<!--考试倒计时-->
+		<div id="exam"></div>
 		<div class="jinrishici-sentence"></div>
-		
+		<div id="teachertime"></div>
 	<script>
 		var t = new Date,
 			e = t.getMonth() + 1,
@@ -50,7 +65,12 @@
 		htmlhours.innerHTML = s + ":" + i + ":" + a;
 		var htmldays = document.getElementById("days");
 		htmldays.innerHTML =  e + "月" + n + "日";
-		
+		var htmlexam = document.getElementById("exam");
+		var ex=23-n;
+		if(ex<=0){
+			htmlexam.style.display="none";
+		}
+		htmlexam.innerHTML = "距离期末考试还有<b style='color:red;'>"+ex+"</b>天";
 		setInterval(function() {
 			var t = new Date,
 				e = t.getMonth() + 1,
@@ -61,6 +81,14 @@
 			var htmlhours = document.getElementById("hours");
 			htmlhours.innerHTML = s + ":" + i + ":" + a;
 		}, 1000);
+		var t = new Date,
+			e = t.getMonth() + 1,
+			n = t.getDate(),
+			s = t.getHours() < 10 ? "0" + t.getHours() : t.getHours(),
+			i = t.getMinutes() < 10 ? "0" + t.getMinutes() : t.getMinutes(),
+			a = t.getSeconds() < 10 ? "0" + t.getSeconds() : t.getSeconds();
+		var htmlteachertime = document.getElementById("teachertime");
+		htmlteachertime.innerHTML = s + ":" + i ;
 		setInterval(function() {
 			var t = new Date,
 				e = t.getMonth() + 1,
@@ -68,9 +96,9 @@
 				s = t.getHours() < 10 ? "0" + t.getHours() : t.getHours(),
 				i = t.getMinutes() < 10 ? "0" + t.getMinutes() : t.getMinutes(),
 				a = t.getSeconds() < 10 ? "0" + t.getSeconds() : t.getSeconds();
-			var htmldays = document.getElementById("days");
-			htmldays.innerHTML =  e + "月" + n + "日";
-		}, 10000);
+			var htmlteachertime = document.getElementById("teachertime");
+			htmlteachertime.innerHTML = s + ":" + i ;
+		}, 5000);
 	</script>
 	<script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
 </html>
