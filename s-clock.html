@@ -56,6 +56,7 @@
 		<div class="jinrishici-sentence"></div>
 		<div id="teachertime"></div>
 	<script>
+		//主时间初始化
 		var t = new Date,
 			e = t.getMonth() + 1,
 			n = t.getDate(),
@@ -73,6 +74,7 @@
 			htmlexam.style.display="none";
 		}
 		htmlexam.innerHTML = "距离期末考试还有<b style='color:red;'>"+ex+"</b>天";*/
+		//每秒刷新部分
 		setInterval(function() {
 			var t = new Date,
 				e = t.getMonth() + 1,
