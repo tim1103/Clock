@@ -3,7 +3,7 @@
 	<head>
 		<title>时钟</title>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 	</head>
 	<style>
 		html {
@@ -29,6 +29,7 @@
 			color:white;
 			
 		}
+		/* 考试倒计时 
 		#exam{
 			font-size:90px;
 			text-align:center;
@@ -36,7 +37,7 @@
 			margin: 0px; 
 			font-family:微软雅黑,Arial, Helvetica, sans-serif;
 			color: #f9f900;;
-		}
+		}*/
 		.jinrishici-sentence{
 			font-size:50px;
 			text-align:center;
@@ -50,8 +51,8 @@
 	</style>
 		<h3 id="hours"></h3>
 		<h3 id="days"></h3>
-		<!--考试倒计时-->
-		<div id="exam"></div>
+		<!--考试倒计时
+		<div id="exam"></div>-->
 		<div class="jinrishici-sentence"></div>
 		<div id="teachertime"></div>
 	<script>
@@ -65,12 +66,13 @@
 		htmlhours.innerHTML = s + ":" + i + ":" + a;
 		var htmldays = document.getElementById("days");
 		htmldays.innerHTML =  e + "月" + n + "日";
-		var htmlexam = document.getElementById("exam");
+		//考试倒计时部分
+		/*var htmlexam = document.getElementById("exam");
 		var ex=23-n;
 		if(ex<=0){
 			htmlexam.style.display="none";
 		}
-		htmlexam.innerHTML = "距离期末考试还有<b style='color:red;'>"+ex+"</b>天";
+		htmlexam.innerHTML = "距离期末考试还有<b style='color:red;'>"+ex+"</b>天";*/
 		setInterval(function() {
 			var t = new Date,
 				e = t.getMonth() + 1,
