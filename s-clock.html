@@ -67,6 +67,8 @@
 		htmlhours.innerHTML = s + ":" + i + ":" + a;
 		var htmldays = document.getElementById("days");
 		htmldays.innerHTML =  e + "月" + n + "日";
+		var htmlteachertime = document.getElementById("teachertime");
+		htmlteachertime.innerHTML = s + ":" + i + ":" + a;
 		//考试倒计时部分
 		/*var htmlexam = document.getElementById("exam");
 		var ex=23-n;
@@ -84,25 +86,11 @@
 				a = t.getSeconds() < 10 ? "0" + t.getSeconds() : t.getSeconds();
 			var htmlhours = document.getElementById("hours");
 			htmlhours.innerHTML = s + ":" + i + ":" + a;
-		}, 1000);
-		var t = new Date,
-			e = t.getMonth() + 1,
-			n = t.getDate(),
-			s = t.getHours() < 10 ? "0" + t.getHours() : t.getHours(),
-			i = t.getMinutes() < 10 ? "0" + t.getMinutes() : t.getMinutes(),
-			a = t.getSeconds() < 10 ? "0" + t.getSeconds() : t.getSeconds();
-		var htmlteachertime = document.getElementById("teachertime");
-		htmlteachertime.innerHTML = s + ":" + i ;
-		setInterval(function() {
-			var t = new Date,
-				e = t.getMonth() + 1,
-				n = t.getDate(),
-				s = t.getHours() < 10 ? "0" + t.getHours() : t.getHours(),
-				i = t.getMinutes() < 10 ? "0" + t.getMinutes() : t.getMinutes(),
-				a = t.getSeconds() < 10 ? "0" + t.getSeconds() : t.getSeconds();
 			var htmlteachertime = document.getElementById("teachertime");
-			htmlteachertime.innerHTML = s + ":" + i ;
-		}, 5000);
+			htmlteachertime.innerHTML = s + ":" + i + ":" + a;
+		}, 1000);
+		
+		
 	</script>
 	<script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
 </html>
