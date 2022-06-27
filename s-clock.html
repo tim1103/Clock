@@ -1,35 +1,36 @@
 <!doctype html>
 <html>
-	<head>
-		<title>时钟</title>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-	</head>
-	<style>
-		html {
-			background-color: black;
-			color: white;
-			font-family:微软雅黑,Arial, Helvetica, sans-serif;
-		}
-		#hours {
-			line-height:250px;
-			text-align:center;
-			padding: 0px 0px 0px; 
-			margin: 0px; 
-			font-size: 250px;
-			
-		}
-		#days{
-			font-size:150px;
-			line-height:230px;
-			text-align:center;
-			padding: 0px 0px 0px; 
-			margin: 0px; 
-			font-family:微软雅黑,Arial, Helvetica, sans-serif;
-			color:white;
-			
-		}
-		/* 考试倒计时 
+
+<head>
+    <title>时钟</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+</head>
+<style>
+    html {
+        background-color: black;
+        color: white;
+        font-family: 微软雅黑, Arial, Helvetica, sans-serif;
+    }
+    
+    #hours {
+        line-height: 250px;
+        text-align: center;
+        padding: 0px 0px 0px;
+        margin: 0px;
+        font-size: 250px;
+    }
+    
+    #days {
+        font-size: 150px;
+        line-height: 230px;
+        text-align: center;
+        padding: 0px 0px 0px;
+        margin: 0px;
+        font-family: 微软雅黑, Arial, Helvetica, sans-serif;
+        color: white;
+    }
+    /* 考试倒计时 
 		#exam{
 			font-size:90px;
 			text-align:center;
@@ -38,59 +39,115 @@
 			font-family:微软雅黑,Arial, Helvetica, sans-serif;
 			color: #f9f900;;
 		}*/
-		.jinrishici-sentence{
-			font-size:50px;
-			text-align:center;
-		}
-		#teachertime{
-			display:inline;
-			position:absolute;
-			right: 10px;
-			bottom: 10px;
-		}
-	</style>
-		<h3 id="hours"></h3>
-		<h3 id="days"></h3>
-		<!--考试倒计时
-		<div id="exam"></div>-->
-		<div class="jinrishici-sentence"></div>
-		<div id="teachertime"></div>
-	<script>
-		//主时间初始化
-		var t = new Date,
-			e = t.getMonth() + 1,
-			n = t.getDate(),
-			s = t.getHours() < 10 ? "0" + t.getHours() : t.getHours(),
-			i = t.getMinutes() < 10 ? "0" + t.getMinutes() : t.getMinutes(),
-			a = t.getSeconds() < 10 ? "0" + t.getSeconds() : t.getSeconds();
-		var htmlhours = document.getElementById("hours");
-		htmlhours.innerHTML = s + ":" + i + ":" + a;
-		var htmldays = document.getElementById("days");
-		htmldays.innerHTML =  e + "月" + n + "日";
-		var htmlteachertime = document.getElementById("teachertime");
-		htmlteachertime.innerHTML = s + ":" + i + ":" + a;
-		//考试倒计时部分
-		/*var htmlexam = document.getElementById("exam");
-		var ex=23-n;
-		if(ex<=0){
-			htmlexam.style.display="none";
-		}
-		htmlexam.innerHTML = "距离期末考试还有<b style='color:red;'>"+ex+"</b>天";*/
-		//每秒刷新部分
-		setInterval(function() {
-			var t = new Date,
-				e = t.getMonth() + 1,
-				n = t.getDate(),
-				s = t.getHours() < 10 ? "0" + t.getHours() : t.getHours(),
-				i = t.getMinutes() < 10 ? "0" + t.getMinutes() : t.getMinutes(),
-				a = t.getSeconds() < 10 ? "0" + t.getSeconds() : t.getSeconds();
-			var htmlhours = document.getElementById("hours");
-			htmlhours.innerHTML = s + ":" + i + ":" + a;
-			var htmlteachertime = document.getElementById("teachertime");
-			htmlteachertime.innerHTML = s + ":" + i + ":" + a;
-		}, 1000);
-		
-		
-	</script>
-	<script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+    
+    .jinrishici-sentence {
+        font-size: 50px;
+        text-align: center;
+    }
+    
+    #teachertime {
+        display: inline;
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+    }
+    
+    #devdoor {
+        display: none;
+        position: absolute;
+        height: 60px;
+        width: 60px;
+        border-radius: 50%;
+        left: 10px;
+        bottom: 10px;
+        background-color: #57AC6C;
+    }
+    
+    .icon {
+        margin: 1px;
+        width: 44px;
+        height: 44px;
+        padding: 6px;
+    }
+</style>
+<h3 id="hours"></h3>
+<h3 id="days" onclick="devmode()"></h3>
+<!--考试倒计时
+<div id="exam"></div>-->
+<div class="jinrishici-sentence"></div>
+<div id="teachertime"></div>
+<div id="devdoor" onclick="doorcolor()">
+    <svg t="1656311284262" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5373" data-spm-anchor-id="a313x.7781069.0.i0" width="64" height="64"><path d="M 337.92 532.48 m -30.72 0 a 30.72 30.72 0 1 0 61.44 0 a 30.72 30.72 0 1 0 -61.44 0 Z" p-id="5374" fill="#ffffff"></path><path d="M 744.653 921.6 H 299.827 a 65.7408 65.7408 0 0 1 -65.536 -65.536 V 208.896 c 0 -36.0448 29.4912 -65.536 65.536 -65.536 h 444.621 c 36.0448 0 65.536 29.4912 65.536 65.536 v 647.168 c 0.2048 36.0448 -29.2864 65.536 -65.3312 65.536 Z M 299.827 192.512 c -8.8064 0 -16.384 7.5776 -16.384 16.384 v 647.168 c 0 8.8064 7.5776 16.384 16.384 16.384 h 444.621 c 8.8064 0 16.384 -7.5776 16.384 -16.384 V 208.896 c 0 -8.8064 -7.5776 -16.384 -16.384 -16.384 H 299.827 Z" p-id="5375" fill="#ffffff"></path></svg>
+</div>
+<script>
+    //主时间初始化
+    var t = new Date,
+        e = t.getMonth() + 1,
+        n = t.getDate(),
+        s = t.getHours() < 10 ? "0" + t.getHours() : t.getHours(),
+        i = t.getMinutes() < 10 ? "0" + t.getMinutes() : t.getMinutes(),
+        a = t.getSeconds() < 10 ? "0" + t.getSeconds() : t.getSeconds();
+    var htmlhours = document.getElementById("hours");
+    htmlhours.innerHTML = s + ":" + i + ":" + a;
+    var htmldays = document.getElementById("days");
+    htmldays.innerHTML = e + "月" + n + "日";
+    //教师时间初始化
+    var htmlteachertime = document.getElementById("teachertime");
+    htmlteachertime.innerHTML = s + ":" + i + ":" + a;
+    //考试倒计时部分
+    /*var htmlexam = document.getElementById("exam");
+    var ex=23-n;
+    if(ex<=0){
+    	htmlexam.style.display="none";
+    }
+    htmlexam.innerHTML = "距离期末考试还有<b style='color:red;'>"+ex+"</b>天";*/
+
+    //每秒刷新部分
+    setInterval(function() {
+        var t = new Date,
+            e = t.getMonth() + 1,
+            n = t.getDate(),
+            s = t.getHours() < 10 ? "0" + t.getHours() : t.getHours(),
+            i = t.getMinutes() < 10 ? "0" + t.getMinutes() : t.getMinutes(),
+            a = t.getSeconds() < 10 ? "0" + t.getSeconds() : t.getSeconds();
+        htmlhours.innerHTML = s + ":" + i + ":" + a;
+        htmlteachertime.innerHTML = s + ":" + i + ":" + a;
+    }, 1000);
+
+    //Dev Mode部分
+    var clicktime = 0;
+
+    function devmode() {
+        clicktime++;
+        if (clicktime >= 5) {
+            devstart();
+        }
+    }
+
+    function devstart() {
+        alert("Dev start");
+        var htmldoor = document.getElementById("devdoor");
+        htmldoor.style.display = "inline";
+    }
+
+    DOOR = "no";
+
+    function doorcolor() {
+        if (DOOR == 'no') {
+            //绿变红
+            var htmldoor = document.getElementById("devdoor");
+            htmldoor.style.backgroundColor = "#FB382D";
+            DOOR = "yes";
+        } else if (DOOR == 'yes') {
+            //红变绿
+            var htmldoor = document.getElementById("devdoor");
+            htmldoor.style.backgroundColor = "#57AC6C";
+            DOOR = "no";
+        } else {
+            alert("出现未知问题");
+        }
+    }
+</script>
+<script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+
 </html>
