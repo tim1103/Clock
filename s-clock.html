@@ -116,6 +116,7 @@
 
     //Dev Mode部分
     var clicktime = 0;
+    DEV = false;
 
     function devmode() {
         clicktime++;
@@ -125,7 +126,20 @@
     }
 
     function devstart() {
-        alert("Dev start");
+        if (!DEV) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000
+            })
+
+            Toast.fire({
+                type: 'success',
+                title: 'Dev模式开启成功'
+            })
+        }
+        DEV = true;
         var htmldoor = document.getElementById("devdoor");
         htmldoor.style.display = "inline";
     }
@@ -138,16 +152,60 @@
             var htmldoor = document.getElementById("devdoor");
             htmldoor.style.backgroundColor = "#FB382D";
             DOOR = "yes";
+            /*
+            Swal.fire({
+                position: 'bottom-start',
+                type: 'success',
+                title: '出门登记成功',
+                showConfirmButton: false,
+                timer: 400
+            })*/
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'bottom-start',
+                showConfirmButton: false,
+                timer: 1000
+            })
+
+            Toast.fire({
+                type: 'success',
+                title: '出门登记成功'
+            })
         } else if (DOOR == 'yes') {
             //红变绿
             var htmldoor = document.getElementById("devdoor");
             htmldoor.style.backgroundColor = "#57AC6C";
             DOOR = "no";
+            /*Swal.fire({
+                position: 'bottom-start',
+                type: 'success',
+                title: '进门登记成功',
+                showConfirmButton: false,
+                timer: 400
+            })*/
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'bottom-start',
+                showConfirmButton: false,
+                timer: 1000
+            })
+
+            Toast.fire({
+                type: 'success',
+                title: '进门登记成功'
+            })
         } else {
-            alert("出现未知问题");
+            Swal.fire({
+                type: 'error',
+                title: '出现未知错误'
+            })
         }
+    }
+    document.oncontextmenu = function() {
+        event.returnValue = false;
     }
 </script>
 <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 
 </html>
