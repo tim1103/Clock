@@ -7,11 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <style>
+    /*全局字体设置*/
+    
     html {
         background-color: black;
         color: white;
-        font-family: 微软雅黑, Arial, Helvetica, sans-serif;
+        font-family: 微软雅黑, Helvetica, Arial, sans-serif;
     }
+    /*上方时分秒时间样式*/
     
     #hours {
         line-height: 250px;
@@ -20,6 +23,7 @@
         margin: 0px;
         font-size: 250px;
     }
+    /*日期样式*/
     
     #days {
         font-size: 150px;
@@ -30,20 +34,23 @@
         font-family: 微软雅黑, Arial, Helvetica, sans-serif;
         color: white;
     }
-    /* 考试倒计时 
-		#exam{
-			font-size:90px;
-			text-align:center;
-			padding: 0px 0px 0px; 
-			margin: 0px; 
-			font-family:微软雅黑,Arial, Helvetica, sans-serif;
-			color: #f9f900;;
-		}*/
+    /* 考试倒计时部分*/
+    /*#exam{
+		font-size:90px;
+		text-align:center;
+		padding: 0px 0px 0px; 
+		margin: 0px; 
+		font-family:微软雅黑,Arial, Helvetica, sans-serif;
+		color: #f9f900;;
+	}
+    */
+    /*今日诗词部分*/
     
     .jinrishici-sentence {
         font-size: 50px;
         text-align: center;
     }
+    /*右下角的小时钟*/
     
     #teachertime {
         display: inline;
@@ -51,6 +58,7 @@
         right: 10px;
         bottom: 10px;
     }
+    /*Dev模式下的开门按钮*/
     
     #devdoor {
         display: none;
@@ -62,6 +70,7 @@
         bottom: 10px;
         background-color: #57AC6C;
     }
+    /*开门按钮的icon*/
     
     .icon {
         margin: 1px;
@@ -70,15 +79,20 @@
         padding: 6px;
     }
 </style>
+<!--时分秒容器-->
 <h3 id="hours"></h3>
-<h3 id="days" onclick="devmode()"></h3>
-<!--考试倒计时
-<div id="exam"></div>-->
-<div class="jinrishici-sentence"></div>
+<!--日期容器-->
+<h3 id="days"></h3>
+<!--考试倒计时-->
+<!--<div id="exam"></div>-->
+<!--今日诗词容器，点5下触发Dev模式-->
+<div class="jinrishici-sentence" onclick="devmode()"></div>
+<!--右下角小时钟容器-->
 <div id="teachertime"></div>
-<div id="devdoor" onclick="doorcolor()">
+<!--Dev模式下开门按钮-->
+<botton id="devdoor" onclick="doorcolor()">
     <svg t="1656311284262" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5373" data-spm-anchor-id="a313x.7781069.0.i0" width="64" height="64"><path d="M 337.92 532.48 m -30.72 0 a 30.72 30.72 0 1 0 61.44 0 a 30.72 30.72 0 1 0 -61.44 0 Z" p-id="5374" fill="#ffffff"></path><path d="M 744.653 921.6 H 299.827 a 65.7408 65.7408 0 0 1 -65.536 -65.536 V 208.896 c 0 -36.0448 29.4912 -65.536 65.536 -65.536 h 444.621 c 36.0448 0 65.536 29.4912 65.536 65.536 v 647.168 c 0.2048 36.0448 -29.2864 65.536 -65.3312 65.536 Z M 299.827 192.512 c -8.8064 0 -16.384 7.5776 -16.384 16.384 v 647.168 c 0 8.8064 7.5776 16.384 16.384 16.384 h 444.621 c 8.8064 0 16.384 -7.5776 16.384 -16.384 V 208.896 c 0 -8.8064 -7.5776 -16.384 -16.384 -16.384 H 299.827 Z" p-id="5375" fill="#ffffff"></path></svg>
-</div>
+</botton>
 <script>
     //主时间初始化
     var t = new Date,
