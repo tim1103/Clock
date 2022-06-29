@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="zh-CN">
 
@@ -78,11 +79,51 @@
         height: 44px;
         padding: 6px;
     }
+
+    #card{
+      --background: linear-gradient(to left, #f7ba2b 0%, #ea5358 100%);
+    	border-radius: 1rem;
+ overflow: visible;
+ background: #f7ba2b;
+ background: var(--background);
+ position: relative;
+ z-index: 1;
+    }
+    #card::after {
+ position: absolute;
+ content: "";
+ top: 30px;
+ left: 0;
+ right: 0;
+ z-index: -1;
+ height: 100%;
+ width: 100%;
+ transform: scale(0.8);
+ filter: blur(25px);
+ background: #f7ba2b;
+ background: var(--background);
+ transition: opacity .5s;
+}
+/*card-info {
+ --color: #181818;
+ background: var(--color);
+ color: var(--color);
+ justify-content: center;
+ align-items: center;
+ width: 90%;
+ height: 100%;
+ overflow: visible;
+ border-radius: .7rem;
+}*/
 </style>
+<div id="card">
+<div id="card-info">
 <!--时分秒容器-->
 <h3 id="hours"></h3>
 <!--日期容器-->
 <h3 id="days"></h3>
+</div>
+</div>
 <!--考试倒计时-->
 <!--<div id="exam"></div>-->
 <!--今日诗词容器，点5下触发Dev模式-->
