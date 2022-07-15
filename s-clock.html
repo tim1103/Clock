@@ -1,41 +1,44 @@
 <!doctype html>
 <html lang="zh-CN">
 
-<head>
-    <meta charset="utf-8">
-    <title>时钟</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<style>
-    /*全局字体设置*/
-    
-    html {
-        background-color: black;
-        color: white;
-        font-family: 微软雅黑, Helvetica, Arial, sans-serif;
-    }
-    /*上方时分秒时间样式*/
-    
-    #hours {
-        /*line-height: 250px;*/
-        text-align: center;
-        padding: 0px 0px 0px;
-        margin: 0px;
-        /*font-size: 250px;*/
-    }
-    /*日期样式*/
-    
-    #days {
-        /*font-size: 150px;
+	<head>
+		<meta charset="utf-8">
+		<title>时钟</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<style>
+		/*全局字体设置*/
+
+		html {
+			background-color: black;
+			color: white;
+			font-family: 微软雅黑, Helvetica, Arial, sans-serif;
+		}
+
+		/*上方时分秒时间样式*/
+
+		#hours {
+			/*line-height: 250px;*/
+			text-align: center;
+			padding: 0px 0px 0px;
+			margin: 0px;
+			/*font-size: 250px;*/
+		}
+
+		/*日期样式*/
+
+		#days {
+			/*font-size: 150px;
         line-height: 230px;*/
-        text-align: center;
-        padding: 0px 0px 0px;
-        margin: 0px;
-        font-family: 微软雅黑, Arial, Helvetica, sans-serif;
-        color: white;
-    }
-    /* 考试倒计时部分*/
-    /*#exam{
+			text-align: center;
+			padding: 0px 0px 0px;
+			margin: 0px;
+			font-family: 微软雅黑, Arial, Helvetica, sans-serif;
+			color: white;
+		}
+
+		/* 考试倒计时部分*/
+		/*#exam{
 		font-size:90px;
 		text-align:center;
 		padding: 0px 0px 0px; 
@@ -44,328 +47,395 @@
 		color: #f9f900;;
 	}
     */
-    /*今日诗词部分*/
-    
-    .jinrishici-sentence {
-        /*font-size: 50px;*/
-        text-align: center;
-        margin-top: 10px;
-    }
-    /*右下角的小时钟*/
-    
-    #teachertime {
-        display: inline;
-        position: absolute;
-        right: 10px;
-        bottom: 10px;
-    }
-    /*Dev模式下的开门按钮*/
-    
-    #devdoor {
-        display: none;
-        position: absolute;
-        height: 60px;
-        width: 60px;
-        border-radius: 50%;
-        left: 10px;
-        bottom: 10px;
-        background-color: #57AC6C;
-    }
-    /*开门按钮的icon*/
-    
-    .icon {
-        margin: 1px;
-        width: 44px;
-        height: 44px;
-        padding: 6px;
-    }
-    
-    #card {
-        justify-content: center;
-        align-items: center;
-        background: rgba(255, 255, 255, 0.15);
-        border-radius: 10px;
-        color: #fff;
-    }
-    /* 缩放后的手表*/
-    
-    @media(min-width: 160px) {
-        #hours {
-            font-size: 30px;
-            line-height: 30px;
-        }
-        /*日期样式*/
-        #days {
-            font-size: 25px;
-            line-height: 40px;
-        }
-        .jinrishici-sentence {
-            font-size: 15px;
-        }
-    }
-    /* 极小设备 (手表, 320px 以下屏幕设备) */
-    
-    @media(min-width: 320px) {
-        #hours {
-            font-size: 68px;
-            line-height: 68px;
-        }
-        /*日期样式*/
-        #days {
-            font-size: 40px;
-            line-height: 55px;
-        }
-        .jinrishici-sentence {
-            font-size: 25px;
-        }
-    }
-    /* 450px*/
-    
-    @media(min-width: 350px) {
-        #hours {
-            font-size: 76px;
-            line-height: 76px;
-        }
-        /*日期样式*/
-        #days {
-            font-size: 50px;
-            line-height: 65px;
-        }
-        .jinrishici-sentence {
-            font-size: 25px;
-        }
-    }
-    /* 小设备 (平板电脑和大型手机，600 像素及以上) */
-    
-    @media(min-width: 600px) {
-        /*上方时分秒时间样式*/
-        #hours {
-            font-size: 130px;
-            line-height: 130px;
-        }
-        /*日期样式*/
-        #days {
-            font-size: 85px;
-            line-height: 115px;
-        }
-        .jinrishici-sentence {
-            font-size: 25px;
-        }
-    }
-    /* 中型设备（平板电脑，768 像素及以上） */
-    
-    @media (min-width: 768px) {
-        /*上方时分秒时间样式*/
-        #hours {
-            font-size: 170px;
-            line-height: 170px;
-        }
-        /*日期样式*/
-        #days {
-            font-size: 90px;
-            line-height: 108px;
-        }
-        .jinrishici-sentence {
-            font-size: 25px;
-        }
-    }
-    /* 大型设备（笔记本电脑/台式机，992 像素及以上） */
-    
-    @media (min-width: 992px) {
-        /*上方时分秒时间样式*/
-        #hours {
-            font-size: 215px;
-            line-height: 215px;
-        }
-        /*日期样式*/
-        #days {
-            font-size: 100px;
-            line-height: 130px;
-        }
-        .jinrishici-sentence {
-            font-size: 40px;
-        }
-    }
-    /* 超大型设备（大型笔记本电脑和台式机，1200 像素及以上） */
-    
-    @media(min-width: 1200px) {
-        /*上方时分秒时间样式*/
-        #hours {
-            font-size: 250px;
-            line-height: 250px;
-        }
-        /*日期样式*/
-        #days {
-            font-size: 150px;
-            line-height: 230px;
-        }
-        .jinrishici-sentence {
-            font-size: 40px;
-        }
-    }
-    /* 2000以上 */
-    
-    @media(min-width: 2000px) {
-        /*上方时分秒时间样式*/
-        #hours {
-            font-size: 260px;
-            line-height: 260px;
-        }
-        /*日期样式*/
-        #days {
-            font-size: 140px;
-            line-height: 161px;
-        }
-        .jinrishici-sentence {
-            font-size: 50px;
-        }
-    }
-    /* 3800以上 */
-    
-    @media(min-width: 3800px) {
-        /*上方时分秒时间样式*/
-        #hours {
-            font-size: 700px;
-            line-height: 700px;
-        }
-        /*日期样式*/
-        #days {
-            font-size: 540px;
-            line-height: 630px;
-        }
-        .jinrishici-sentence {
-            font-size: 150px;
-        }
-    }
-</style>
-<div id="card">
-    <!--时分秒容器-->
-    <h3 id="hours"></h3>
-    <!--日期容器-->
-    <h3 id="days"></h3>
-</div>
-<!--考试倒计时-->
-<!--<div id="exam"></div>-->
-<!--今日诗词容器，点5下触发Dev模式-->
-<div class="jinrishici-sentence" onclick="devmode()"></div>
-<!--右下角小时钟容器-->
-<div id="teachertime"></div>
-<!--Dev模式下开门按钮-->
-<botton id="devdoor" onclick="doorcolor()">
-    <svg t="1656311284262" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5373" data-spm-anchor-id="a313x.7781069.0.i0" width="64" height="64"><path d="M 337.92 532.48 m -30.72 0 a 30.72 30.72 0 1 0 61.44 0 a 30.72 30.72 0 1 0 -61.44 0 Z" p-id="5374" fill="#ffffff"></path><path d="M 744.653 921.6 H 299.827 a 65.7408 65.7408 0 0 1 -65.536 -65.536 V 208.896 c 0 -36.0448 29.4912 -65.536 65.536 -65.536 h 444.621 c 36.0448 0 65.536 29.4912 65.536 65.536 v 647.168 c 0.2048 36.0448 -29.2864 65.536 -65.3312 65.536 Z M 299.827 192.512 c -8.8064 0 -16.384 7.5776 -16.384 16.384 v 647.168 c 0 8.8064 7.5776 16.384 16.384 16.384 h 444.621 c 8.8064 0 16.384 -7.5776 16.384 -16.384 V 208.896 c 0 -8.8064 -7.5776 -16.384 -16.384 -16.384 H 299.827 Z" p-id="5375" fill="#ffffff"></path></svg>
-</botton>
-<script>
-    //主时间初始化
-    var t = new Date,
-        e = t.getMonth() + 1,
-        n = t.getDate(),
-        s = t.getHours() < 10 ? "0" + t.getHours() : t.getHours(),
-        i = t.getMinutes() < 10 ? "0" + t.getMinutes() : t.getMinutes(),
-        a = t.getSeconds() < 10 ? "0" + t.getSeconds() : t.getSeconds();
-    var htmlhours = document.getElementById("hours");
-    htmlhours.innerHTML = s + ":" + i + ":" + a;
-    var htmldays = document.getElementById("days");
-    htmldays.innerHTML = e + "月" + n + "日";
-    //教师时间初始化
-    var htmlteachertime = document.getElementById("teachertime");
-    htmlteachertime.innerHTML = s + ":" + i + ":" + a;
-    //考试倒计时部分
-    /*var htmlexam = document.getElementById("exam");
-    var ex=23-n;
-    if(ex<=0){
-    	htmlexam.style.display="none";
-    }
-    htmlexam.innerHTML = "距离期末考试还有<b style='color:red;'>"+ex+"</b>天";*/
+		/*今日诗词部分*/
 
-    //每秒刷新部分
-    setInterval(function() {
-        var t = new Date,
-            e = t.getMonth() + 1,
-            n = t.getDate(),
-            s = t.getHours() < 10 ? "0" + t.getHours() : t.getHours(),
-            i = t.getMinutes() < 10 ? "0" + t.getMinutes() : t.getMinutes(),
-            a = t.getSeconds() < 10 ? "0" + t.getSeconds() : t.getSeconds();
-        htmlhours.innerHTML = s + ":" + i + ":" + a;
-        htmlteachertime.innerHTML = s + ":" + i + ":" + a;
-    }, 1000);
+		#jinrishici-sentence {
+			/*font-size: 50px;*/
+			text-align: center;
+			margin-top: 10px;
+		}
 
-    //Dev Mode部分
-    var clicktime = 0;
-    DEV = false;
+		/*右下角的小时钟*/
 
-    function devmode() {
-        clicktime++;
-        if (clicktime >= 5) {
-            devstart();
-        }
-    }
+		#teachertime {
+			display: inline;
+			position: absolute;
+			right: 10px;
+			bottom: 10px;
+		}
 
-    function devstart() {
-        if (!DEV) {
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 3000
-            })
+		/*Dev模式下的开门按钮*/
 
-            Toast.fire({
-                type: 'success',
-                title: 'Dev模式开启成功'
-            })
-        }
-        DEV = true;
-        var htmldoor = document.getElementById("devdoor");
-        htmldoor.style.display = "inline";
-    }
+		#devdoor {
+			display: none;
+			position: absolute;
+			height: 60px;
+			width: 60px;
+			border-radius: 50%;
+			left: 10px;
+			bottom: 10px;
+			background-color: #57AC6C;
+		}
 
-    DOOR = "no";
+		/*开门按钮的icon*/
 
-    function doorcolor() {
-        if (DOOR == 'no') {
-            //绿变红
-            var htmldoor = document.getElementById("devdoor");
-            htmldoor.style.backgroundColor = "#FB382D";
-            DOOR = "yes";
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'bottom-start',
-                showConfirmButton: false,
-                timer: 1000
-            })
+		.icon {
+			margin: 1px;
+			width: 44px;
+			height: 44px;
+			padding: 6px;
+		}
 
-            Toast.fire({
-                type: 'success',
-                title: '出门登记成功'
-            })
-        } else if (DOOR == 'yes') {
-            //红变绿
-            var htmldoor = document.getElementById("devdoor");
-            htmldoor.style.backgroundColor = "#57AC6C";
-            DOOR = "no";
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'bottom-start',
-                showConfirmButton: false,
-                timer: 1000
-            })
+		#card {
+			justify-content: center;
+			align-items: center;
+			background: rgba(255, 255, 255, 0.15);
+			border-radius: 10px;
+			color: #fff;
+		}
 
-            Toast.fire({
-                type: 'success',
-                title: '进门登记成功'
-            })
-        } else {
-            Swal.fire({
-                type: 'error',
-                title: '出现未知错误'
-            })
-        }
-    }
-    document.oncontextmenu = function() {
-        event.returnValue = false;
-    }
-</script>
-<script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+		/* 缩放后的手表*/
+
+		@media(min-width: 160px) {
+			#hours {
+				font-size: 30px;
+				line-height: 30px;
+			}
+
+			/*日期样式*/
+			#days {
+				font-size: 25px;
+				line-height: 40px;
+			}
+
+			#jinrishici-sentence {
+				font-size: 15px;
+			}
+		}
+
+		/* 极小设备 (手表, 320px 以下屏幕设备) */
+
+		@media(min-width: 320px) {
+			#hours {
+				font-size: 68px;
+				line-height: 68px;
+			}
+
+			/*日期样式*/
+			#days {
+				font-size: 40px;
+				line-height: 55px;
+			}
+
+			#jinrishici-sentence {
+				font-size: 25px;
+			}
+		}
+
+		/* 450px*/
+
+		@media(min-width: 350px) {
+			#hours {
+				font-size: 76px;
+				line-height: 76px;
+			}
+
+			/*日期样式*/
+			#days {
+				font-size: 50px;
+				line-height: 65px;
+			}
+
+			#jinrishici-sentence {
+				font-size: 25px;
+			}
+		}
+
+		/* 小设备 (平板电脑和大型手机，600 像素及以上) */
+
+		@media(min-width: 600px) {
+
+			/*上方时分秒时间样式*/
+			#hours {
+				font-size: 130px;
+				line-height: 130px;
+			}
+
+			/*日期样式*/
+			#days {
+				font-size: 85px;
+				line-height: 115px;
+			}
+
+			#jinrishici-sentence {
+				font-size: 25px;
+			}
+		}
+
+		/* 中型设备（平板电脑，768 像素及以上） */
+
+		@media (min-width: 768px) {
+
+			/*上方时分秒时间样式*/
+			#hours {
+				font-size: 170px;
+				line-height: 170px;
+			}
+
+			/*日期样式*/
+			#days {
+				font-size: 90px;
+				line-height: 108px;
+			}
+
+			#jinrishici-sentence {
+				font-size: 25px;
+			}
+		}
+
+		/* 大型设备（笔记本电脑/台式机，992 像素及以上） */
+
+		@media (min-width: 992px) {
+
+			/*上方时分秒时间样式*/
+			#hours {
+				font-size: 215px;
+				line-height: 215px;
+			}
+
+			/*日期样式*/
+			#days {
+				font-size: 100px;
+				line-height: 130px;
+			}
+
+			#jinrishici-sentence {
+				font-size: 40px;
+			}
+		}
+
+		/* 超大型设备（大型笔记本电脑和台式机，1200 像素及以上） */
+
+		@media(min-width: 1200px) {
+
+			/*上方时分秒时间样式*/
+			#hours {
+				font-size: 250px;
+				line-height: 250px;
+			}
+
+			/*日期样式*/
+			#days {
+				font-size: 150px;
+				line-height: 230px;
+			}
+
+			#jinrishici-sentence {
+				font-size: 40px;
+			}
+		}
+
+		/* 2000以上 */
+
+		@media(min-width: 2000px) {
+
+			/*上方时分秒时间样式*/
+			#hours {
+				font-size: 260px;
+				line-height: 260px;
+			}
+
+			/*日期样式*/
+			#days {
+				font-size: 140px;
+				line-height: 161px;
+			}
+
+			#jinrishici-sentence {
+				font-size: 50px;
+			}
+		}
+
+		/* 3800以上 */
+
+		@media(min-width: 3800px) {
+
+			/*上方时分秒时间样式*/
+			#hours {
+				font-size: 700px;
+				line-height: 700px;
+			}
+
+			/*日期样式*/
+			#days {
+				font-size: 540px;
+				line-height: 630px;
+			}
+
+			#jinrishici-sentence {
+				font-size: 150px;
+			}
+		}
+
+		#card {
+			color: white;
+			border-radius: 20px;
+			padding: 5px;
+			box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+			background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
+		}
+
+		#card_content {
+			background: rgb(5, 6, 45);
+			border-radius: 17px;
+			width: 100%;
+			height: 100%;
+		}
+	</style>
+	<div id="card">
+		<div id="card_content">
+			<!--时分秒容器-->
+			<h3 id="hours"></h3>
+			<!--日期容器-->
+			<h3 id="days"></h3>
+		</div>
+	</div>
+	<!--考试倒计时-->
+	<!--<div id="exam"></div>-->
+	<!--今日诗词容器，点5下触发Dev模式-->
+	<div id="jinrishici-sentence" onclick="devmode()"></div>
+	<!--右下角小时钟容器-->
+	<div id="teachertime"></div>
+	<!--Dev模式下开门按钮-->
+	<botton id="devdoor" onclick="doorcolor()">
+		<svg t="1656311284262" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+			p-id="5373" data-spm-anchor-id="a313x.7781069.0.i0" width="64" height="64">
+			<path d="M 337.92 532.48 m -30.72 0 a 30.72 30.72 0 1 0 61.44 0 a 30.72 30.72 0 1 0 -61.44 0 Z" p-id="5374"
+				fill="#ffffff"></path>
+			<path
+				d="M 744.653 921.6 H 299.827 a 65.7408 65.7408 0 0 1 -65.536 -65.536 V 208.896 c 0 -36.0448 29.4912 -65.536 65.536 -65.536 h 444.621 c 36.0448 0 65.536 29.4912 65.536 65.536 v 647.168 c 0.2048 36.0448 -29.2864 65.536 -65.3312 65.536 Z M 299.827 192.512 c -8.8064 0 -16.384 7.5776 -16.384 16.384 v 647.168 c 0 8.8064 7.5776 16.384 16.384 16.384 h 444.621 c 8.8064 0 16.384 -7.5776 16.384 -16.384 V 208.896 c 0 -8.8064 -7.5776 -16.384 -16.384 -16.384 H 299.827 Z"
+				p-id="5375" fill="#ffffff"></path>
+		</svg>
+	</botton>
+	<script>
+		//主时间初始化
+		var t = new Date,
+			e = t.getMonth() + 1,
+			n = t.getDate(),
+			s = t.getHours() < 10 ? "0" + t.getHours() : t.getHours(),
+			i = t.getMinutes() < 10 ? "0" + t.getMinutes() : t.getMinutes(),
+			a = t.getSeconds() < 10 ? "0" + t.getSeconds() : t.getSeconds();
+		var htmlhours = document.getElementById("hours");
+		htmlhours.innerHTML = s + ":" + i + ":" + a;
+		var htmldays = document.getElementById("days");
+		htmldays.innerHTML = e + "月" + n + "日";
+		//教师时间初始化
+		var htmlteachertime = document.getElementById("teachertime");
+		htmlteachertime.innerHTML = s + ":" + i + ":" + a;
+		//考试倒计时部分
+		/*var htmlexam = document.getElementById("exam");
+		var ex=23-n;
+		if(ex<=0){
+			htmlexam.style.display="none";
+		}
+		htmlexam.innerHTML = "距离期末考试还有<b style='color:red;'>"+ex+"</b>天";*/
+
+		//每秒刷新部分
+		setInterval(function() {
+			var t = new Date,
+				e = t.getMonth() + 1,
+				n = t.getDate(),
+				s = t.getHours() < 10 ? "0" + t.getHours() : t.getHours(),
+				i = t.getMinutes() < 10 ? "0" + t.getMinutes() : t.getMinutes(),
+				a = t.getSeconds() < 10 ? "0" + t.getSeconds() : t.getSeconds();
+			htmlhours.innerHTML = s + ":" + i + ":" + a;
+			htmlteachertime.innerHTML = s + ":" + i + ":" + a;
+		}, 1000);
+
+		//Dev Mode部分
+		var clicktime = 0;
+		DEV = false;
+
+		function devmode() {
+			clicktime++;
+			if (clicktime >= 5) {
+				devstart();
+			}
+		}
+
+		function devstart() {
+			if (!DEV) {
+				const Toast = Swal.mixin({
+					toast: true,
+					position: 'top-end',
+					showConfirmButton: false,
+					timer: 3000
+				})
+
+				Toast.fire({
+					type: 'success',
+					title: 'Dev模式开启成功'
+				})
+			}
+			DEV = true;
+			var htmldoor = document.getElementById("devdoor");
+			htmldoor.style.display = "inline";
+		}
+
+		DOOR = "no";
+
+		function doorcolor() {
+			if (DOOR == 'no') {
+				//绿变红
+				var htmldoor = document.getElementById("devdoor");
+				htmldoor.style.backgroundColor = "#FB382D";
+				DOOR = "yes";
+				const Toast = Swal.mixin({
+					toast: true,
+					position: 'bottom-start',
+					showConfirmButton: false,
+					timer: 1000
+				})
+
+				Toast.fire({
+					type: 'success',
+					title: '出门登记成功'
+				})
+			} else if (DOOR == 'yes') {
+				//红变绿
+				var htmldoor = document.getElementById("devdoor");
+				htmldoor.style.backgroundColor = "#57AC6C";
+				DOOR = "no";
+				const Toast = Swal.mixin({
+					toast: true,
+					position: 'bottom-start',
+					showConfirmButton: false,
+					timer: 1000
+				})
+
+				Toast.fire({
+					type: 'success',
+					title: '进门登记成功'
+				})
+			} else {
+				Swal.fire({
+					type: 'error',
+					title: '出现未知错误'
+				})
+			}
+		}
+		//去除右键
+		document.oncontextmenu = function() {
+			event.returnValue = false;
+		}
+		console.log("输入 hide() 来隐藏今日诗词");
+		var htmlshici = document.getElementById("jinrishici-sentence");
+		function hide(){
+			htmlshici.style.display="none";
+			return "隐藏成功！";
+		}
+	</script>
+	<script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 
 </html>
